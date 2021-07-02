@@ -2,3 +2,20 @@
   width: 480px;
   height: 320px;
 }
+
+#remote-container{
+  display: flex;
+}
+#remote-container video{
+  height: auto;
+  position: relative !important;
+}
+
+.elements{
+text-align: center;
+}
+
+.agora-img {
+  height: 400px;
+  width: 80%;
+}

@@ -1,6 +1,8 @@
 npm install agora-rtc-sdk-ng --save
 
 ng build --prod --baseHref="https://angulardevelopment.github.io/agora-live-streaming-app/"
+
+https://angulardevelopment.github.io/agora-live-streaming-app/
 # LiveStreamingAgora
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
