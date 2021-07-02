@@ -1,0 +1,10 @@
+
+
+<div class="col" *ngFor="let i of stream.liveUsersList; let j = index">
+  <div>
+  <div id="{{ 'remote-playerlist' + i.uid}}" class="ui centered medium image" style="  width: 200px;
+  height: 200px;display: flex;"></div>
+  <div>user {{j + 1}}</div>
+</div>
+</div>
+<button (click)="joinLiveCall()">watch live video</button>

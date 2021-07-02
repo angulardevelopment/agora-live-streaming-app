@@ -1,4 +1,7 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { StreamService } from '../services/stream.service';
 
 @Component({
   selector: 'app-basic',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicComponent implements OnInit {
 
-  constructor() { }
+  hideBtns = true;
 
-  ngOnInit(): void {
+  constructor(public stream: StreamService, public api: ApiService) {
   }
+
+  ngOnInit() {
+
+  }
+
+  async startCall() {
+      const uid = this.api.generateUid();
+      const rtcDetails = await this.api.generateTokenAndUid(uid);
+      this.stream.createRTCClient('');
+      this.stream.agoraServerEvents(this.stream.rtc);
+      await this.stream.localUser(rtcDetails.token, uid, '');
+
+      this.hideBtns = false;
+  }
+
+
+
+
+
+
+
+  async logout() {
+    await this.stream.leaveCall();
+  }
+
 
 }
