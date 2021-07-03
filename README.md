@@ -1,5 +1,7 @@
 npm install agora-rtc-sdk-ng --save
 
+https://angulardevelopment.github.io/agora-live-streaming-app/
+
 ng build --prod --baseHref="https://angulardevelopment.github.io/agora-live-streaming-app/"
 
 https://angulardevelopment.github.io/agora-live-streaming-app/
