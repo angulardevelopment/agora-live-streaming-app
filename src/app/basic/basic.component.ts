@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import { ApiService } from '../services/api.service';
+import { CommonService } from '../services/common.service';
 import { StreamService } from '../services/stream.service';
 
 @Component({
@@ -13,34 +14,30 @@ export class BasicComponent implements OnInit {
 
   hideBtns = true;
 
-  constructor(public stream: StreamService, public api: ApiService) {
+  constructor(public stream: StreamService, public api: ApiService, public common: CommonService) {
   }
 
   ngOnInit() {
 
   }
-  async update(){
-    this.stream.rtc.client = AgoraRTC.createClient({ mode: 'live', codec: 'vp8' });
 
-  await this.stream.rtc.client.setClientRole('audience');
-  }
+
   async startCall() {
-      const uid = this.api.generateUid();
-      const rtcDetails = await this.api.generateTokenAndUid(uid);
-      this.stream.createRTCClient('');
-      this.stream.agoraServerEvents(this.stream.rtc);
-      await this.stream.localUser(rtcDetails.token, uid, '');
+    const uid = this.common.generateUid();
+    const rtcDetails = await this.common.generateTokenAndUid(uid);
+    this.stream.createRTCClient('');
+    this.stream.agoraServerEvents(this.stream.rtc);
+    await this.stream.localUser(rtcDetails.token, uid, '');
 
-      this.hideBtns = false;
+    this.hideBtns = false;
   }
 
-async mute() {
+  async mute() {
     this.stream.rtc.localAudioTrack.setEnabled(false);
   }
 
   unmute() {
     this.stream.rtc.localAudioTrack.setEnabled(true);
-
   }
 
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import AgoraRTC, { IAgoraRTCClient, LiveStreamingTranscodingConfig, ICameraVideoTrack, IMicrophoneAudioTrack, ScreenVideoTrackInitConfig, VideoEncoderConfiguration, AREAS, IRemoteAudioTrack, ClientRole } from 'agora-rtc-sdk-ng';
 import { BehaviorSubject } from 'rxjs';
+import { IRtc, IUser } from '../models';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +22,7 @@ export class StreamService {
   remoteUsers: IUser[] = [];       // To add remote users in list
   updateUserInfo = new BehaviorSubject<any>(null); // to update remote users name
   liveUsersList = [];
+
   constructor() { }
 
   createRTCClient(type) {
@@ -30,9 +32,8 @@ export class StreamService {
     } else {
       this.rtc.client = AgoraRTC.createClient({ mode: 'rtc', codec: 'h264' });
     }
-
-    // this.rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "h264" , role: 'audience'});
   }
+
   // comment it if you don't want virtual camera
   async switchCamera(label, localTracks) {
     const cams = await AgoraRTC.getCameras(); //  all cameras devices you can use
@@ -45,7 +46,7 @@ export class StreamService {
     if (type == 'live') {
       await this.rtc.client.setClientRole('audience');
     }
-    const uid = await this.rtc.client.join(this.options.appId, this.options.channel,
+    await this.rtc.client.join(this.options.appId, this.options.channel,
       token, uuid);
 
 
@@ -74,7 +75,11 @@ export class StreamService {
       await rtc.client.subscribe(user, mediaType);
       if (mediaType === 'video') {
         const remoteVideoTrack = user.videoTrack;
-        remoteVideoTrack.play('remote-playerlist' + user.uid);
+
+          setTimeout(() => {
+            remoteVideoTrack.play('remote-playerlist' + user.uid);
+          }, 100);
+
       }
       if (mediaType === 'audio') {
         const remoteAudioTrack = user.audioTrack;
@@ -113,12 +118,4 @@ export class StreamService {
 
 
 }
-export interface IUser {
-  uid: number;
-  name?: string;
-}
-export interface IRtc {
-  client: IAgoraRTCClient;
-  localAudioTrack: IMicrophoneAudioTrack;
-  localVideoTrack: ICameraVideoTrack;
-}
+
