@@ -9,15 +9,15 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'video-app';
   hide = true;
-  constructor(private router: Router){
+  constructor(private router: Router) {
 
   }
-  open(value){
+  open(value) {
     if (value != 3) {
       this.router.navigate([`/user/${value}`]);
       this.hide = false;
     }
-  else {
+    else {
       this.router.navigate([`/live`]);
       this.hide = false;
     }

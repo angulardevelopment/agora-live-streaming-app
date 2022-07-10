@@ -1,6 +1,5 @@
-import { HttpParams } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import AgoraRTC from 'agora-rtc-sdk-ng';
 import { ApiService } from '../services/api.service';
 import { CommonService } from '../services/common.service';
 import { StreamService } from '../services/stream.service';
@@ -39,10 +38,6 @@ export class BasicComponent implements OnInit {
   unmute() {
     this.stream.rtc.localAudioTrack.setEnabled(true);
   }
-
-
-
-
 
   async logout() {
     await this.stream.leaveCall();

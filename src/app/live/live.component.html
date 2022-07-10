@@ -1,22 +1,22 @@
 <div class="elements">
-<h1>
-  Live Streaming<br><small style="font-size: 14pt;">Powered by Agora.io</small>
-</h1>
+  <h1>
+    Live Streaming<br><small style="font-size: 14pt;">Powered by Agora.io</small>
+  </h1>
 
-<h4>Remote video</h4>
+  <h4>Remote video</h4>
 
-<div *ngIf="stream.liveUsersList.length == 0">
-  <img src="assets/agora.png" alt="A black, brown, and white dog wearing a kerchief" class="agora-img">
+  <div *ngIf="stream.liveUsersList.length == 0">
+    <img src="assets/agora.png" alt="A black, brown, and white dog wearing a kerchief" class="agora-img">
 
-</div>
+  </div>
 
-<div class="col" *ngFor="let i of stream.liveUsersList; let j = index" id="remote-container">
-  <div>
-  <div id="{{ 'remote-playerlist' + i.uid}}" class="ui centered medium image" style="  width: 200px;
+  <div class="col" *ngFor="let i of stream.liveUsersList; let j = index" id="remote-container">
+    <div>
+      <div id="{{ 'remote-playerlist' + i.uid}}" class="ui centered medium image" style="  width: 200px;
   height: 200px;display: flex;border: 1px solid;"></div>
-  <div>user {{j + 1}}</div>
-</div>
-</div>
+      <div>user {{j + 1}}</div>
+    </div>
+  </div>
 
-<button (click)="joinLiveCall()">watch live video</button>
+  <button (click)="joinLiveCall()">watch live video</button>
 </div>

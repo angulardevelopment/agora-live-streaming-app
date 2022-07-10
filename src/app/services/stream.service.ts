@@ -14,7 +14,7 @@ export class StreamService {
     localVideoTrack: null,
   };
   options = {
-    appId: '',  // set your appid here
+    appId: 'b1a776384fe24b58a43030c834b8f7dd',  // set your appid here
     channel: 'test', // Set the channel name.
     // token: '', // Pass a token if your project enables the App Certificate.
     // uid: null
@@ -58,7 +58,7 @@ export class StreamService {
         encoderConfig: '120p',
       });
       // comment it if you want to use your camera
-      this.switchCamera('OBS Virtual Camera', this.rtc.localVideoTrack);
+      // this.switchCamera('OBS Virtual Camera', this.rtc.localVideoTrack);
       // Publish the local audio and video tracks to the channel.
       // this.rtc.localAudioTrack.play();
       this.rtc.localVideoTrack.play('local-player');
@@ -76,9 +76,9 @@ export class StreamService {
       if (mediaType === 'video') {
         const remoteVideoTrack = user.videoTrack;
 
-          setTimeout(() => {
-            remoteVideoTrack.play('remote-playerlist' + user.uid);
-          }, 100);
+        setTimeout(() => {
+          remoteVideoTrack.play('remote-playerlist' + user.uid);
+        }, 100);
 
       }
       if (mediaType === 'audio') {
