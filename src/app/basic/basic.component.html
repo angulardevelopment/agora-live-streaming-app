@@ -30,10 +30,7 @@
       <p id="local-player-name" class="player-name"></p>
       <div id="local-player" class="player"></div>
     </div>
-    <div>
-      <button (click)="mute()" class="btn btn-live btn-sm">mute</button>
-      <button (click)="unmute()" class="btn btn-live btn-sm">unmute</button>
-    </div>
+
     <div class="w-100">Remote Users</div>
     <div class="col" *ngFor="let i of stream.remoteUsers">
       <div id="{{ 'remote-playerlist' + i.uid }}" class="ui centered medium image" style="width: 200px; height: 200px">

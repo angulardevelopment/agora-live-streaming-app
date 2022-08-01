@@ -17,7 +17,6 @@ export class LiveComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.stream.liveUsersList, 'liveUsersList');
 
   }
 

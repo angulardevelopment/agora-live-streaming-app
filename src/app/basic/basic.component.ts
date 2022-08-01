@@ -31,13 +31,7 @@ export class BasicComponent implements OnInit {
     this.hideBtns = false;
   }
 
-  async mute() {
-    this.stream.rtc.localAudioTrack.setEnabled(false);
-  }
 
-  unmute() {
-    this.stream.rtc.localAudioTrack.setEnabled(true);
-  }
 
   async logout() {
     await this.stream.leaveCall();
