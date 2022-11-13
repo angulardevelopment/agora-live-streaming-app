@@ -14,7 +14,7 @@ export class StreamService {
     localVideoTrack: null,
   };
   options = {
-    appId: 'b1a776384fe24b58a43030c834b8f7dd',  // set your appid here
+    appId: '',  // set your appid here
     channel: 'test', // Set the channel name.
     // token: '', // Pass a token if your project enables the App Certificate.
     // uid: null
