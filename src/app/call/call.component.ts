@@ -5,11 +5,11 @@ import { CommonService } from '../services/common.service';
 import { StreamService } from '../services/stream.service';
 
 @Component({
-  selector: 'app-basic',
-  templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss']
+  selector: 'app-call',
+  templateUrl: './call.component.html',
+  styleUrls: ['./call.component.scss']
 })
-export class BasicComponent implements OnInit {
+export class CallComponent implements OnInit {
 
   hideBtns = true;
 
