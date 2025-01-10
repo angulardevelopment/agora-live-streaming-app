@@ -13,9 +13,16 @@ export class StreamService {
     localAudioTrack: null,
     localVideoTrack: null,
   };
+
+  // const appID = '970CA35de60c44645bbae8a215061b33';
+  // const appCertificate = '5CFd2fd1755d40ecb72977518be15d3b';
+  // const channelName = '7d72365eb983485397e3e3f9d460bdda';
+  // const uid = 2882341273;
+  // const account = "2882341273";
+
   options = {
     appId: '',  // set your appid here
-    channel: 'test', // Set the channel name.
+    channel: '7d72365eb983485397e3e3f9d460bdda', // Set the channel name.
     // token: '', // Pass a token if your project enables the App Certificate.
     // uid: null
   };
@@ -35,14 +42,14 @@ export class StreamService {
   }
 
   // comment it if you don't want virtual camera
-  async switchCamera(label, localTracks) {
+  async switchCamera(label: string, localTracks: ICameraVideoTrack) {
     const cams = await AgoraRTC.getCameras(); //  all cameras devices you can use
     const currentCam = cams.find(cam => cam.label === label);
     await localTracks.setDevice(currentCam.deviceId);
   }
 
   // To join a call with tracks (video or audio)
-  async localUser(token, uuid, type) {
+  async localUser(token: string, uuid: number, type: string) {
     if (type == 'live') {
       await this.rtc.client.setClientRole('audience');
     }
@@ -67,7 +74,7 @@ export class StreamService {
     }
   }
 
-  agoraServerEvents(rtc) {
+  agoraServerEvents(rtc: IRtc) {
 
     rtc.client.on('user-published', async (user, mediaType) => {
       console.log(user, mediaType, 'user-published');

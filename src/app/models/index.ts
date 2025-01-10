@@ -10,3 +10,8 @@ export interface IRtc {
   localAudioTrack: IMicrophoneAudioTrack;
   localVideoTrack: ICameraVideoTrack;
 }
+
+export interface TokenInfo {
+  uid: number;
+  token: string;
+}
