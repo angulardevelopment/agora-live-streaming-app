@@ -10,7 +10,7 @@ import { TokenInfo } from '../models';
   styleUrls: ['./live.component.scss']
 })
 export class LiveComponent implements OnInit {
-  liveUser: TokenInfo = { uid: 0, token: '' };
+  // liveUser: TokenInfo = { uid: 0, token: '' };
 
   constructor(public stream: StreamService, public api: ApiService, public common: CommonService) { }
 
@@ -18,9 +18,9 @@ export class LiveComponent implements OnInit {
     const t = this.common.getRoute();
     console.log(t, 't');
     if(t.includes('live')){
-      this.liveUser.uid = 2882341275;
-      this.liveUser.token = '00648b158ccc64343cf9973a8f5df311f2aIACu7HdQ4zXX+QVGAlWeGVGmzWxIbpWLFCVaPcaZep7hgrdIfRBiBTIMIgACm1hboTZ+ZwQAAQAx83xnAgAx83xnAwAx83xnBAAx83xn';
-      this.common.userCheck = 'live';
+      // this.liveUser.uid = 2882341275;
+      // this.liveUser.token = '00648b158ccc64343cf9973a8f5df311f2aIACu7HdQ4zXX+QVGAlWeGVGmzWxIbpWLFCVaPcaZep7hgrdIfRBiBTIMIgACm1hboTZ+ZwQAAQAx83xnAgAx83xnAwAx83xnBAAx83xn';
+      // this.common.userCheck = 'live';
     }
   }
 
@@ -30,14 +30,14 @@ export class LiveComponent implements OnInit {
 
   async joinLiveCall() {
     try {
-      // const uid = this.common.generateUid();
-      // const rtcDetails = await this.common.generateTokenAndUid(uid);
+      const uid = this.common.generateUid();
+      const rtcDetails = await this.common.generateTokenAndUid(uid);
       this.stream.createRTCClient('live');
       this.stream.agoraServerEvents(this.stream.rtc);
-      // await this.stream.localUser(rtcDetails.token, uid, 'live');
-      if(this.common.userCheck == 'live'){
-await this.stream.localUser(this.liveUser.token, this.liveUser.uid, 'live');
-      }
+      await this.stream.localUser(rtcDetails.token, uid, 'live');
+//       if(this.common.userCheck == 'live'){
+// await this.stream.localUser(this.liveUser.token, this.liveUser.uid, 'live');
+//       }
     } catch (error) {
       console.log(error, 'error');
     }

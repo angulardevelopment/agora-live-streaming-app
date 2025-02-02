@@ -22,7 +22,7 @@ export class StreamService {
 
   options = {
     appId: '',  // set your appid here
-    channel: '7d72365eb983485397e3e3f9d460bdda', // Set the channel name.
+    channel: '', // Set the channel name.
     // token: '', // Pass a token if your project enables the App Certificate.
     // uid: null
   };
