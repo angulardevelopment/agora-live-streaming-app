@@ -24,7 +24,7 @@ export class StreamService {
     appId: '',  // set your appid here
     channel: '', // Set the channel name.
     // token: '', // Pass a token if your project enables the App Certificate.
-    // uid: null
+    uid: null
   };
   remoteUsers: IUser[] = [];       // To add remote users in list
   updateUserInfo = new BehaviorSubject<any>(null); // to update remote users name
@@ -45,7 +45,8 @@ export class StreamService {
   async switchCamera(label: string, localTracks: ICameraVideoTrack) {
     const cams = await AgoraRTC.getCameras(); //  all cameras devices you can use
     const currentCam = cams.find(cam => cam.label === label);
-    await localTracks.setDevice(currentCam.deviceId);
+    console.log(currentCam,cams, 'currentCam');
+    // await localTracks.setDevice(currentCam.deviceId);
   }
 
   // To join a call with tracks (video or audio)
@@ -65,7 +66,7 @@ export class StreamService {
         encoderConfig: '120p',
       });
       // comment it if you want to use your camera
-      // this.switchCamera('OBS Virtual Camera', this.rtc.localVideoTrack);
+      this.switchCamera('OBS Virtual Camera', this.rtc.localVideoTrack);
       // Publish the local audio and video tracks to the channel.
       // this.rtc.localAudioTrack.play();
       this.rtc.localVideoTrack.play('local-player');
@@ -93,10 +94,6 @@ export class StreamService {
         remoteAudioTrack.play();
       }
     });
-    rtc.client.on('user-unpublished', user => {
-      console.log(user, 'user-unpublished');
-    });
-
 
     rtc.client.on('user-joined', (user) => {
       const id = user.uid;
@@ -105,7 +102,19 @@ export class StreamService {
       this.updateUserInfo.next(id);
       console.log('user-joined', user, this.remoteUsers, 'event1');
     });
+
+    rtc.client.on('user-left', (user) => {
+      console.log('user-left', user, 'event3');
+      this.removeUser(user.uid);
+
+    });
   }
+
+  removeUser (uuid) {
+    this.remoteUsers =  this.remoteUsers.filter(obj=> obj.uid!=uuid);
+
+  }
+  
   // To leave channel-
   async leaveCall() {
     // Destroy the local audio and video tracks.

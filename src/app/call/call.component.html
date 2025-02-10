@@ -27,14 +27,14 @@
   <!-- Streams -->
   <div class="row video-group">
     <div class="col">
-      <p id="local-player-name" class="player-name"></p>
+      <p id="local-player-name" class="player-name">id: {{stream.options.uid}}</p>
       <div id="local-player" class="player"></div>
     </div>
 
     <div class="w-100">Remote Users</div>
     <div class="col" *ngFor="let i of stream.remoteUsers">
       <div id="{{ 'remote-playerlist' + i.uid }}" class="ui centered medium image" style="width: 200px; height: 200px">
-        {{ i.name }}
+        {{ i.name }} id: {{i.uid}}
       </div>
     </div>
   </div>

@@ -36,8 +36,8 @@ export class CallComponent implements OnInit {
 
 
   async startCall() {
-    const uid = this.common.generateUid();
-    const rtcDetails: TokenInfo = await this.common.generateTokenAndUid(uid);
+    this.stream.options.uid = this.common.generateUid();
+    const rtcDetails: TokenInfo = await this.common.generateTokenAndUid(this.stream.options.uid);
     this.stream.createRTCClient('');
     this.stream.agoraServerEvents(this.stream.rtc);
     // if(this.common.userCheck == '1'){

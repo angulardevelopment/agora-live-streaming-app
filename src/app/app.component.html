@@ -1,8 +1,9 @@
-<button (click)="open(1)" *ngIf="hide">user1</button>
-<button (click)="open(2)" *ngIf="hide">user2</button>
-<button (click)="open(3)" *ngIf="hide">live</button>
 
-
+<div class="button-container">
+    <button (click)="open(1)" *ngIf="hide">user1 staging</button>
+    <button (click)="open(2)" *ngIf="hide">user2 staging</button>
+    <button (click)="open(3)" *ngIf="hide">live</button>
+  </div>
 
 
 <router-outlet></router-outlet>
