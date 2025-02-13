@@ -15,3 +15,9 @@ export interface TokenInfo {
   uid: number;
   token: string;
 }
+
+export interface OptionsInfo {
+  appId: string;
+  channel: string;
+  uid: number;
+}

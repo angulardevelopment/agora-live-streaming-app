@@ -9,10 +9,13 @@ import { StreamService } from './stream.service';
 })
 export class CommonService {
   // userCheck = '0';
+  hide = true;
+  
   constructor(public api: ApiService,  public route: ActivatedRoute, private router: Router,
     public stream: StreamService
   ) { }
 
+  
   // rtc token
   async generateTokenAndUid(uid: number) {
     const url = 'https://agora-tokens-80k1.onrender.com/rtcToken'
@@ -49,4 +52,12 @@ console.log(data, 'getAppDetails')
 this.stream.options.appId = data['appid'];
 this.stream.options.channel = data['channelName'];
   }
+
+
+  init(){
+    const detail = localStorage.getItem('app');
+    if(detail)
+      this.hide = false;
+  }
+
 }

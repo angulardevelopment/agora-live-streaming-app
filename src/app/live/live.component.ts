@@ -45,6 +45,7 @@ export class LiveComponent implements OnInit {
   }
 
   async leave(){
+    this.stream.liveUsersList = [];
     await this.stream.leaveCall();
   }
 }

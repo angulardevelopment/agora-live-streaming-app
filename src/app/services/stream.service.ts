@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import AgoraRTC, { IAgoraRTCClient, LiveStreamingTranscodingConfig, ICameraVideoTrack, IMicrophoneAudioTrack, ScreenVideoTrackInitConfig, VideoEncoderConfiguration, AREAS, IRemoteAudioTrack, ClientRole } from 'agora-rtc-sdk-ng';
+import AgoraRTC, { IAgoraRTCClient, LiveStreamingTranscodingConfig, ICameraVideoTrack, IMicrophoneAudioTrack, ScreenVideoTrackInitConfig, VideoEncoderConfiguration, AREAS, IRemoteAudioTrack, ClientRole, UID } from 'agora-rtc-sdk-ng';
 import { BehaviorSubject } from 'rxjs';
-import { IRtc, IUser } from '../models';
+import { IRtc, IUser, OptionsInfo } from '../models';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,15 +20,15 @@ export class StreamService {
   // const uid = 2882341273;
   // const account = "2882341273";
 
-  options = {
+  options: OptionsInfo = {
     appId: '',  // set your appid here
     channel: '', // Set the channel name.
     // token: '', // Pass a token if your project enables the App Certificate.
     uid: null
   };
   remoteUsers: IUser[] = [];       // To add remote users in list
-  updateUserInfo = new BehaviorSubject<any>(null); // to update remote users name
-  liveUsersList = [];
+  updateUserInfo = new BehaviorSubject<UID>(null); // to update remote users name
+  liveUsersList: IUser[]  = [];
 
   constructor() { }
 
@@ -66,7 +66,7 @@ export class StreamService {
         encoderConfig: '120p',
       });
       // comment it if you want to use your camera
-      this.switchCamera('OBS Virtual Camera', this.rtc.localVideoTrack);
+      // this.switchCamera('OBS Virtual Camera', this.rtc.localVideoTrack);
       // Publish the local audio and video tracks to the channel.
       // this.rtc.localAudioTrack.play();
       this.rtc.localVideoTrack.play('local-player');

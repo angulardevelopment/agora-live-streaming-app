@@ -9,7 +9,7 @@ import { CommonService } from './services/common.service';
 })
 export class AppComponent {
   title = 'video-app';
-  hide = true;
+  
   constructor(private router: Router,
     public common: CommonService
   ) {
@@ -18,12 +18,11 @@ export class AppComponent {
 
   ngOnInit(){
     this.common.getAppDetails('test');
-    // this.init();
+  this.common.init(); 
   }
 
   open(value: number) {
     localStorage.setItem('app', value.toString());
-    this.setApp(value);
     if (value == 3) {
       this.router.navigate([`/live`]);
     } else {
@@ -31,17 +30,4 @@ export class AppComponent {
     }
   }
 
-  setApp(value: number) {
-    if (value == 3) {
-      this.hide = false;
-    } else {
-      this.hide = false;
-    }
-  }
-
-  init(){
-    const detail = localStorage.getItem('app');
-    if(detail)
-    this.setApp(parseInt(detail));
-  }
 }
