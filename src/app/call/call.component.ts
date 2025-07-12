@@ -6,9 +6,10 @@ import { StreamService } from '../services/stream.service';
 import { TokenInfo } from '../models';
 
 @Component({
-  selector: 'app-call',
-  templateUrl: './call.component.html',
-  styleUrls: ['./call.component.scss']
+    selector: 'app-call',
+    templateUrl: './call.component.html',
+    styleUrls: ['./call.component.scss'],
+    standalone: false
 })
 export class CallComponent implements OnInit {
   // dummyDataUser1: TokenInfo = { uid: 0, token: '' };

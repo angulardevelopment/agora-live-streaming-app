@@ -5,9 +5,10 @@ import { StreamService } from '../services/stream.service';
 import { TokenInfo } from '../models';
 
 @Component({
-  selector: 'app-live',
-  templateUrl: './live.component.html',
-  styleUrls: ['./live.component.scss']
+    selector: 'app-live',
+    templateUrl: './live.component.html',
+    styleUrls: ['./live.component.scss'],
+    standalone: false
 })
 export class LiveComponent implements OnInit {
   // liveUser: TokenInfo = { uid: 0, token: '' };
