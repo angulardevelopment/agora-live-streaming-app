@@ -124,7 +124,6 @@
       }
     }
   },
-  "defaultProject": "live-streaming-agora",
   "cli": {
     "analytics": false
   }
