@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "live-streaming-agora:build"
+            "buildTarget": "live-streaming-agora:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "live-streaming-agora:build:production"
+              "buildTarget": "live-streaming-agora:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "live-streaming-agora:build"
+            "buildTarget": "live-streaming-agora:build"
           }
         },
         "test": {
