@@ -32,10 +32,12 @@
     </div>
 
     <div class="w-100">Remote Users</div>
-    <div class="col" *ngFor="let i of stream.remoteUsers">
-      <div id="{{ 'remote-playerlist' + i.uid }}" class="ui centered medium image" style="width: 200px; height: 200px">
-        {{ i.name }} id: {{i.uid}}
+    @for (i of stream.remoteUsers; track i) {
+      <div class="col">
+        <div id="{{ 'remote-playerlist' + i.uid }}" class="ui centered medium image" style="width: 200px; height: 200px">
+          {{ i.name }} id: {{i.uid}}
+        </div>
       </div>
-    </div>
+    }
   </div>
 </div>

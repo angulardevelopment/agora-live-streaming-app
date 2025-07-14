@@ -1,10 +1,12 @@
 
-<div class="button-container" *ngIf="common.hide">
-  <h1>Create your personalized video conferencing solution tailored to your unique needs.</h1>
+@if (common.hide) {
+  <div class="button-container">
+    <h1>Create your personalized video conferencing solution tailored to your unique needs.</h1>
     <button (click)="open(1)" >user1 staging</button>
     <button (click)="open(2)" >user2 staging</button>
     <button (click)="open(3)" >live</button>
   </div>
+}
 
 
 <router-outlet></router-outlet>

@@ -5,18 +5,21 @@
 
   <h4>Remote video</h4>
 
-  <div *ngIf="stream.liveUsersList.length == 0">
-    <img src="assets/agora.png" alt="A black, brown, and white dog wearing a kerchief" class="agora-img">
-
-  </div>
-
-  <div class="col" *ngFor="let i of stream.liveUsersList; let j = index" id="remote-container">
+  @if (stream.liveUsersList.length == 0) {
     <div>
+      <img src="assets/agora.png" alt="A black, brown, and white dog wearing a kerchief" class="agora-img">
+    </div>
+  }
+
+  @for (i of stream.liveUsersList; track i; let j = $index) {
+    <div class="col" id="remote-container">
+      <div>
       <div id="{{ 'remote-playerlist' + i.uid}}" class="ui centered medium image" style="  width: 200px;
   height: 200px;display: flex;border: 1px solid;"></div>
-      <div>user {{j + 1}}</div>
+        <div>user {{j + 1}}</div>
+      </div>
     </div>
-  </div>
+  }
 
   <button (click)="joinLiveCall()">watch live video</button>
   <button (click)="leave()">Leave</button>
